@@ -12,6 +12,7 @@ export const ACTION_TYPES = {
     START_GAME: "START_GAME",
     MOVE: "MOVE",
     RESET: "RESET",
+    BACK_IN_HISTORY: "BACK_IN_HISTORY",
 };
 
 export const winningConditions = [
@@ -40,13 +41,21 @@ export const checkWinner = (board) => {
 export const gameReducer = (state, action) => {
     switch (action.type) {
         case ACTION_TYPES.START_GAME:
-            return { ...state, isPlaying: true };
+            return { ...INITIAL_STATE, isPlaying: true };
         case ACTION_TYPES.MOVE:
             const { history, currentMove, currentPlayer } = state;
             const tempBoard = history[currentMove === 0 ? currentMove : currentMove - 1].slice();
+
+            if (tempBoard[action.payload]) {
+                return state;
+            }
             tempBoard[action.payload] = currentPlayer;
             const isWinner = checkWinner(tempBoard);
-            const newHistory = [...history.slice(0, currentMove), tempBoard, ...history.slice(currentMove + 1)];
+            const newHistory = [
+                ...history.slice(0, currentMove),
+                tempBoard,
+                ...history.slice(currentMove + 1).fill([]),
+            ];
             const newMove = currentMove + 1;
             if (isWinner) {
                 return {
@@ -64,7 +73,12 @@ export const gameReducer = (state, action) => {
                 currentPlayer: newMove % 2 === 0 ? "X" : "O",
             };
         case ACTION_TYPES.RESET:
+            console.log("reset");
             return { ...INITIAL_STATE, isPlaying: true };
+        case ACTION_TYPES.BACK_IN_HISTORY:
+            console.log(action.payload);
+            console.log(state.history);
+            return { ...state, currentMove: action.payload };
         default:
             return state;
     }
@@ -76,22 +90,26 @@ export const GameContext = React.createContext({
     currentPlayer: "X",
     winner: null,
     isPlaying: false,
+    history: [],
     start: () => {},
     move: () => {},
     reset: () => {},
+    backInHistory: () => {},
 });
 
 export const GameProvider = ({ children }) => {
     const [state, dispatch] = useReducer(gameReducer, INITIAL_STATE);
     const value = {
-        board: state.history[state.currentMove === 0 ? 0 : state.currentMove - 1],
+        board: state.currentMove === 0 ? Array(1) : state.history[state.currentMove - 1],
         currentMove: state.currentMove,
         currentPlayer: state.currentPlayer,
         winner: state.winner,
         isPlaying: state.isPlaying,
+        history: state.history.filter((arr) => arr.length > 0),
         start: () => dispatch({ type: ACTION_TYPES.START_GAME }),
         move: (i) => dispatch({ type: ACTION_TYPES.MOVE, payload: i }),
         reset: () => dispatch({ type: ACTION_TYPES.RESET }),
+        backInHistory: (i) => dispatch({ type: ACTION_TYPES.BACK_IN_HISTORY, payload: i }),
     };
     return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 };

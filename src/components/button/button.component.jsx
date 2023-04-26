@@ -1,6 +1,6 @@
 import { StyledButton } from "./button.styles";
 
-const Button = ({ isPlaying, start, reset }) => {
+const Button = ({ isPlaying, winner, start, reset }) => {
     const handleClick = () => {
         isPlaying ? reset() : start();
     };

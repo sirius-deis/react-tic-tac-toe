@@ -6,7 +6,7 @@
 
 :root {
     font-size: 62.5%;
-    --cell-width: 9rem;
+    --cell-width: 10rem;
     --bg-color: #f0fdfa;
     --text-color: #042f2e;
     --cell-color: #ccfbf1;
@@ -14,6 +14,8 @@
     --border-color: #115e59;
     --btn-color: #2dd4bf;
     --btn-color-hover: #0f766e;
+    --history-color: #ccfbf1;
+    --history-color-hover: #5eead4;
     --shadow-color: rgba(19, 78, 74, 0.2);
 }
 

@@ -3,12 +3,12 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import Button from "./button.component";
 
 describe("Button component", () => {
-    it("should render button component with reset title", () => {
+    it("should render a button component with reset title", () => {
         render(<Button isPlaying={true} />);
         expect(screen.queryByText("Start")).not.toBeInTheDocument();
         expect(screen.getByText("Reset")).toBeInTheDocument();
     });
-    it("should render button component with reset title", () => {
+    it("should render a button component with reset title", () => {
         render(<Button isPlaying={false} />);
         expect(screen.getByText("Start")).toBeInTheDocument();
         expect(screen.queryByText("Reset")).not.toBeInTheDocument();

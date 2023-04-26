@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
-    padding: 1rem 4rem;
+    padding: 1.2rem 6rem;
     border: 0;
     font-size: 1.8rem;
     color: var(--text-color);

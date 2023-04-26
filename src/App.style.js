@@ -5,7 +5,7 @@ export const StyledContainer = styled.div`
     margin: 10% auto;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 4rem;
 `;
 
 export const StyledStatus = styled.div`
@@ -14,7 +14,6 @@ export const StyledStatus = styled.div`
 
 export const StyledRow = styled.div`
     display: flex;
-    flex-direction: column;
     align-items: center;
 `;
 
