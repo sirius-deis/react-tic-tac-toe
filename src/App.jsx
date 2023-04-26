@@ -6,12 +6,14 @@ import Board from "./components/board/board.component";
 import Button from "./components/button/button.component";
 
 function App() {
-    const history = useContext(GameContext);
+    const { currentPlayer, winner } = useContext(GameContext);
     return (
         <StyledContainer>
             <StyledRow>
                 <StyledColumn width="60%">
-                    <StyledStatus>X move</StyledStatus>
+                    <StyledStatus>
+                        {winner ? <span>{winner} is a winner</span> : <span>{currentPlayer} move</span>}
+                    </StyledStatus>
                 </StyledColumn>
             </StyledRow>
             <StyledRow>
