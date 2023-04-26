@@ -26,3 +26,24 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--bg-color);
 }
+
+@media screen and (max-width: 1250px) {
+    :root {
+        font-size: 56.24%;
+        --cell-width: 9rem;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    :root {
+        font-size: 50%;
+        --cell-width: 8rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    :root {
+        font-size: 43.75%;
+        --cell-width: 7rem;
+    }
+}

@@ -6,6 +6,15 @@ export const StyledContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 4rem;
+    @media screen and (max-width: 1250px) {
+        width: 60%;
+    }
+    @media screen and (max-width: 850px) {
+        width: 80%;
+    }
+    @media screen and (max-width: 650px) {
+        width: 90%;
+    }
 `;
 
 export const StyledStatus = styled.div`

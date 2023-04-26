@@ -73,11 +73,8 @@ export const gameReducer = (state, action) => {
                 currentPlayer: newMove % 2 === 0 ? "X" : "O",
             };
         case ACTION_TYPES.RESET:
-            console.log("reset");
             return { ...INITIAL_STATE, isPlaying: true };
         case ACTION_TYPES.BACK_IN_HISTORY:
-            console.log(action.payload);
-            console.log(state.history);
             return { ...state, currentMove: action.payload };
         default:
             return state;
