@@ -6,13 +6,13 @@ import Board from "./components/board/board.component";
 import Button from "./components/button/button.component";
 
 function App() {
-    const { currentPlayer, winner } = useContext(GameContext);
+    const { currentPlayer, winner, isPlaying, start, reset } = useContext(GameContext);
     return (
         <StyledContainer>
             <StyledRow>
                 <StyledColumn width="60%">
                     <StyledStatus>
-                        {winner ? <span>{winner} is a winner</span> : <span>{currentPlayer} move</span>}
+                        {winner ? <span>{winner} is a winner</span> : <span>{currentPlayer} turn</span>}
                     </StyledStatus>
                 </StyledColumn>
             </StyledRow>
@@ -23,7 +23,7 @@ function App() {
             </StyledRow>
             <StyledRow>
                 <StyledColumn width="60%">
-                    <Button />
+                    <Button {...{ isPlaying, start, reset }} />
                 </StyledColumn>
             </StyledRow>
         </StyledContainer>
