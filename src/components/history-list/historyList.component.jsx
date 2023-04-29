@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import { StyledHistoryList } from "./historyList.style";
 import HistoryEntry from "../history-entry/historyEntry.component";
 
@@ -12,3 +14,8 @@ const HistoryList = ({ history, backInHistory }) => {
 };
 
 export default HistoryList;
+
+HistoryList.propTypes = {
+    history: PropTypes.array,
+    backInHistory: PropTypes.func,
+};
