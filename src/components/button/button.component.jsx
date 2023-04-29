@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { StyledButton } from "./button.styles";
 
 const Button = ({ isPlaying, winner, start, reset }) => {
@@ -8,3 +9,10 @@ const Button = ({ isPlaying, winner, start, reset }) => {
 };
 
 export default Button;
+
+Button.propTypes = {
+    isPlaying: PropTypes.bool,
+    winner: PropTypes.string,
+    start: PropTypes.func,
+    reset: PropTypes.func,
+};
