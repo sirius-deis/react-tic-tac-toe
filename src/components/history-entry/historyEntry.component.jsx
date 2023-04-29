@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import { StyledHistoryEntry, StyledHistoryButton } from "./historyEntry.style";
 
 const HistoryEntry = ({ index, moveInHistory }) => {
@@ -10,3 +12,8 @@ const HistoryEntry = ({ index, moveInHistory }) => {
 };
 
 export default HistoryEntry;
+
+HistoryEntry.propTypes = {
+    index: PropTypes.number,
+    moveInHistory: PropTypes.func,
+};
